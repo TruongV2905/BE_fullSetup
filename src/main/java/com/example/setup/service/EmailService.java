@@ -11,15 +11,15 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 @Service
-public class EmailService implements IEmail   {
+public class EmailService implements IEmail {
     @Autowired
-    TemplateEngine templateEngine; // tạo ra giao diện
+    private TemplateEngine templateEngine; // tạo ra giao diện
     @Autowired
-    JavaMailSender javaMailSender; // đẩy mail đi
+    private JavaMailSender javaMailSender; // đẩy mail đi
 
 
     @Override
-    public void sendEmail(EmailDetail emailDetail) {
+    public void sendEmail(final EmailDetail emailDetail) {
         try {
             Context context = new Context();
             context.setVariable("name", emailDetail.getReceiver().getEmail());

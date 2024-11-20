@@ -16,7 +16,7 @@ import java.util.Date;
 public class TokenService {
 
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     public final String SECRET_KEY = "4bb6d1dfbafb64a681139d1586b6f1160d18159afd57c8c79136d7490630407b";
 
@@ -26,7 +26,7 @@ public class TokenService {
     }
 
     // tạo ra token
-    public String generateToken(Account account) {
+    public String generateToken(final Account account) {
         String token = Jwts.builder()
                 .subject(account.getId() + "")
                 .issuedAt(new Date(System.currentTimeMillis())) // 10:30
